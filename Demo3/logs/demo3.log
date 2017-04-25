@@ -1,0 +1,38 @@
+25.07.2015 15:26:51.430 0 DEBUG 140213253068608 ServiceHelper: Starting service
+25.07.2015 15:26:51.430 0 DEBUG 140213253068608 HttpListener: Listening on port 8080
+25.07.2015 15:26:51.431 1 WARNING 140213253068608 ServiceHelper: Service has started
+25.07.2015 15:26:55.060 0 DEBUG 140213253068608 HttpListener: New connection
+25.07.2015 15:26:55.061 0 DEBUG 140213253068608 HttpConnectionHandler (0x6c0410): constructed
+25.07.2015 15:26:55.061 0 DEBUG 140213172373248 HttpConnectionHandler (0x6c0410): thread started
+25.07.2015 15:26:55.061 0 DEBUG 140213172373248 HttpConnectionHandler (0x6c0410): handle new connection
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpConnectionHandler (0x6c0410): read input
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read request
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: received header Host: localhost:8080
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: received header User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: received header Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: received header Accept-Language: de,en-US;q=0.7,en;q=0.3
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.062 0 DEBUG 140213172373248 HttpRequest: received header Accept-Encoding: gzip, deflate
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: received header Cookie: sessionid={3e5cd59a-62e8-487f-bd47-1f7c03eaedde}
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: received header Connection: keep-alive
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: received header Cache-Control: max-age=0
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: read header
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: headers completed
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: expect no body
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: extract and decode request parameters
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: extract cookies
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpRequest: found cookie sessionid={3e5cd59a-62e8-487f-bd47-1f7c03eaedde}
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 HttpConnectionHandler (0x6c0410): received request
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 Conroller: path=/
+25.07.2015 15:26:55.063 0 DEBUG 140213172373248 Conroller: finished request
+25.07.2015 15:26:55.064 0 DEBUG 140213172373248 HttpConnectionHandler (0x6c0410): finished request
+28.10.2016 17:05:45.639 0 DEBUG    139755130652480 ServiceHelper: Starting service
+28.10.2016 17:05:45.644 0 DEBUG    139755130652480 HttpListener: Listening on port 8080
+28.10.2016 17:05:45.644 1 WARNING  139755130652480 Startup: Service has started

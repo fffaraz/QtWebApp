@@ -1,0 +1,71 @@
+26.07.2015 08:15:13.630 0 DEBUG 139932081915712 TemplateLoader: path=/home/stefan/Programmierung/QtWebApp/Demo1/etc/templates, codec=UTF-8
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 TemplateCache: timeout=60000, size=1000000
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 HttpSessionStore: Sessions expire after 3600000 milliseconds
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 StaticFileController: docroot=/home/stefan/Programmierung/QtWebApp/Demo1/etc/docroot, encoding=UTF-8, maxAge=60000
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 StaticFileController: cache timeout=60000, size=1000000
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 RequestMapper: created
+26.07.2015 08:15:13.631 0 DEBUG 139932081915712 HttpListener: Listening on port 8080
+26.07.2015 08:15:13.631 1 WARNING 139932081915712 MyApplication: started
+26.07.2015 08:15:16.840 0 DEBUG 139932081915712 HttpListener: New connection
+26.07.2015 08:15:16.840 0 DEBUG 139932081915712 HttpConnectionHandler (0x1c7da00): constructed
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): thread started
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): handle new connection
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): read input
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read request
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: received header Host: localhost:8080
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: received header User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: received header Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: received header Accept-Language: de,en-US;q=0.7,en;q=0.3
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.841 0 DEBUG 139932001220352 HttpRequest: received header Accept-Encoding: gzip, deflate
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: received header Connection: keep-alive
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: received header Cache-Control: max-age=0
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: headers completed
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: expect no body
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: extract and decode request parameters
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpRequest: extract cookies
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): received request
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 RequestMapper: path=/
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 StaticFileController: Cache miss for /
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 StaticFileController: Open file /home/stefan/Programmierung/QtWebApp/Demo1/etc/docroot//index.html
+26.07.2015 08:15:16.842 0 DEBUG 139932001220352 RequestMapper: finished request
+26.07.2015 08:15:16.843 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): finished request
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): read input
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: read request
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: received header Host: localhost:8080
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: received header User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0
+26.07.2015 08:15:16.947 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Accept: image/png,image/*;q=0.8,*/*;q=0.5
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Accept-Language: de,en-US;q=0.7,en;q=0.3
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Accept-Encoding: gzip, deflate
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Referer: http://localhost:8080/
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Connection: keep-alive
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: received header Cache-Control: max-age=0
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: read header
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: headers completed
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: expect no body
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: extract and decode request parameters
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpRequest: extract cookies
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): received request
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 RequestMapper: path=/Schmetterling klein.png
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 StaticFileController: Cache miss for /Schmetterling klein.png
+26.07.2015 08:15:16.948 0 DEBUG 139932001220352 StaticFileController: Open file /home/stefan/Programmierung/QtWebApp/Demo1/etc/docroot/Schmetterling klein.png
+26.07.2015 08:15:16.949 0 DEBUG 139932001220352 RequestMapper: finished request
+26.07.2015 08:15:16.949 0 DEBUG 139932001220352 HttpConnectionHandler (0x1c7da00): finished request
+
+Note: If you don't see new messages here, then the logger might be commented out in main.cpp.
+
