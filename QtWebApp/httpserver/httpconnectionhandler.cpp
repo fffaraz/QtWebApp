@@ -84,7 +84,9 @@ void HttpConnectionHandler::run()
 
 void HttpConnectionHandler::handleConnection(tSocketDescriptor socketDescriptor)
 {
+#ifdef SUPERVERBOSE
     qDebug("HttpConnectionHandler (%p): handle new connection", this);
+#endif
     busy = true;
     Q_ASSERT(socket->isOpen()==false); // if not, then the handler is already busy
 
@@ -144,7 +146,9 @@ void HttpConnectionHandler::readTimeout()
 
 void HttpConnectionHandler::disconnected()
 {
+#ifdef SUPERVERBOSE
     qDebug("HttpConnectionHandler (%p): disconnected", this);
+#endif
     socket->close();
     readTimer.stop();
     busy = false;
@@ -193,7 +197,9 @@ void HttpConnectionHandler::read()
         if (currentRequest->getStatus()==HttpRequest::complete)
         {
             readTimer.stop();
+#ifdef SUPERVERBOSE
             qDebug("HttpConnectionHandler (%p): received request",this);
+#endif
 
             // Copy the Connection:close header to the response
             HttpResponse response(socket);
@@ -231,7 +237,9 @@ void HttpConnectionHandler::read()
                 response.write(QByteArray(),true);
             }
 
+#ifdef SUPERVERBOSE
             qDebug("HttpConnectionHandler (%p): finished request",this);
+#endif
 
             // Find out whether the connection must be closed
             if (!closeConnection)
