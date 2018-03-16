@@ -13,3 +13,5 @@ Fork from Stefan's QtWebApp: http://stefanfrings.de/qtwebapp/index-en.html
 ### See also
 * https://github.com/msrd0/QtWebApp
 * https://github.com/samiavasil/QtWebApp
+* https://github.com/azadkuh/qhttp
+* https://github.com/nikhilm/qhttpserver
