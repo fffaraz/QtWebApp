@@ -22,3 +22,5 @@ Fork from Stefan's QtWebApp: http://stefanfrings.de/qtwebapp/index-en.html
 * https://github.com/nitroshare/qhttpengine
 * https://github.com/samiavasil/QtWebApp
 * https://github.com/yhirose/cpp-httplib
+* https://github.com/eidheim/Simple-Web-Server
+* https://gitlab.com/eidheim/Simple-Web-Server
