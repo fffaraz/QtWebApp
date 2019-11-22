@@ -6,6 +6,7 @@
 #include "dumpcontroller.h"
 #include <QVariant>
 #include <QDateTime>
+#include <QThread>
 
 DumpController::DumpController()
 {}

@@ -47,7 +47,7 @@ public:
       @param settings configurations settings
       @param parent parent object
     */
-    TemplateLoader(QSettings* settings, QObject* parent=0);
+    TemplateLoader(const QSettings* settings, QObject* parent=nullptr);
 
     /** Destructor */
     virtual ~TemplateLoader();
@@ -61,7 +61,7 @@ public:
       ignored.
       @return If the template cannot be loaded, an error message is logged and an empty template is returned.
     */
-    Template getTemplate(QString templateName, QString locales=QString());
+    Template getTemplate(const QString templateName, const QString locales=QString());
 
 protected:
 
@@ -70,7 +70,7 @@ protected:
       @param localizedName Name of the template with locale to find
       @return The template document, or empty string if not found
     */
-    virtual QString tryFile(QString localizedName);
+    virtual QString tryFile(const QString localizedName);
 
     /** Directory where the templates are searched */
     QString templatePath;

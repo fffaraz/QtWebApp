@@ -9,7 +9,7 @@
 
 using namespace stefanfrings;
 
-HttpConnectionHandlerPool::HttpConnectionHandlerPool(QSettings* settings, HttpRequestHandler* requestHandler)
+HttpConnectionHandlerPool::HttpConnectionHandlerPool(const QSettings *settings, HttpRequestHandler *requestHandler)
     : QObject()
 {
     Q_ASSERT(settings!=0);

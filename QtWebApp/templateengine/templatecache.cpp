@@ -5,7 +5,7 @@
 
 using namespace stefanfrings;
 
-TemplateCache::TemplateCache(QSettings* settings, QObject* parent)
+TemplateCache::TemplateCache(const QSettings* settings, QObject* parent)
     :TemplateLoader(settings,parent)
 {
     cache.setMaxCost(settings->value("cacheSize","1000000").toInt());
@@ -13,7 +13,7 @@ TemplateCache::TemplateCache(QSettings* settings, QObject* parent)
     qDebug("TemplateCache: timeout=%i, size=%i",cacheTimeout,cache.maxCost());
 }
 
-QString TemplateCache::tryFile(QString localizedName)
+QString TemplateCache::tryFile(const QString localizedName)
 {
     qint64 now=QDateTime::currentMSecsSinceEpoch();
     mutex.lock();

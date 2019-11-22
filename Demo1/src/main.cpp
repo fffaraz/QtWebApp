@@ -5,27 +5,11 @@
 
 #include <QCoreApplication>
 #include <QDir>
+#include "global.h"
 #include "httplistener.h"
-#include "templatecache.h"
-#include "httpsessionstore.h"
-#include "staticfilecontroller.h"
-#include "filelogger.h"
 #include "requestmapper.h"
 
 using namespace stefanfrings;
-
-/** Cache for template files */
-TemplateCache* templateCache;
-
-/** Storage for session cookies */
-HttpSessionStore* sessionStore;
-
-/** Controller for static files */
-StaticFileController* staticFileController;
-
-/** Redirects log messages to a file */
-FileLogger* logger;
-
 
 /** Search the configuration file */
 QString searchConfigFile()
@@ -65,7 +49,6 @@ QString searchConfigFile()
         qWarning("%s/%s not found",qPrintable(dir),qPrintable(fileName));
     }
     qFatal("Cannot find config file %s",qPrintable(fileName));
-    return 0;
 }
 
 
@@ -83,12 +66,10 @@ int main(int argc, char *argv[])
     QString configFileName=searchConfigFile();
 
     // Configure logging into a file
-    /*
     QSettings* logSettings=new QSettings(configFileName,QSettings::IniFormat,&app);
     logSettings->beginGroup("logging");
     FileLogger* logger=new FileLogger(logSettings,10000,&app);
     logger->installMsgHandler();
-    */
 
     // Configure template loader and cache
     QSettings* templateSettings=new QSettings(configFileName,QSettings::IniFormat,&app);
@@ -110,9 +91,7 @@ int main(int argc, char *argv[])
     listenerSettings->beginGroup("listener");
     new HttpListener(listenerSettings,new RequestMapper(&app),&app);
 
-    qWarning("Application has started");
-
+    qInfo("Application has started");
     app.exec();
-
-    qWarning("Application has stopped");
+    qInfo("Application has stopped");
 }

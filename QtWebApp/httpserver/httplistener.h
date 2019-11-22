@@ -49,12 +49,17 @@ public:
     /**
       Constructor.
       Creates a connection pool and starts listening on the configured host and port.
-      @param settings Configuration settings for the HTTP server. Must not be 0.
+      @param settings Configuration settings, usually stored in an INI file. Must not be 0.
+      Settings are read from the current group, so the caller must have called settings->beginGroup().
+      Because the group must not change during runtime, it is recommended to provide a
+      separate QSettings instance that is not used by other parts of the program.
+      The HttpListener does not take over ownership of the QSettings instance, so the
+      caller should destroy it during shutdown.
       @param requestHandler Processes each received HTTP request, usually by dispatching to controller classes.
       @param parent Parent object.
       @warning Ensure to close or delete the listener before deleting the request handler.
     */
-    HttpListener(QSettings* settings, HttpRequestHandler* requestHandler, QObject* parent = NULL);
+    HttpListener(const QSettings* settings, HttpRequestHandler* requestHandler, QObject* parent=nullptr);
 
     /** Destructor */
     virtual ~HttpListener();
@@ -78,7 +83,7 @@ protected:
 private:
 
     /** Configuration settings for the HTTP server */
-    QSettings* settings;
+    const QSettings* settings;
 
     /** Point to the reuqest handler which processes all HTTP requests */
     HttpRequestHandler* requestHandler;

@@ -10,12 +10,12 @@
 
 using namespace stefanfrings;
 
-HttpListener::HttpListener(QSettings* settings, HttpRequestHandler* requestHandler, QObject *parent)
+HttpListener::HttpListener(const QSettings* settings, HttpRequestHandler* requestHandler, QObject *parent)
     : QTcpServer(parent)
 {
-    Q_ASSERT(settings!=0);
-    Q_ASSERT(requestHandler!=0);
-    pool=NULL;
+    Q_ASSERT(settings!=nullptr);
+    Q_ASSERT(requestHandler!=nullptr);
+    pool=nullptr;
     this->settings=settings;
     this->requestHandler=requestHandler;
     // Reqister type of socketDescriptor for signal/slot handling
@@ -39,7 +39,7 @@ void HttpListener::listen()
         pool=new HttpConnectionHandlerPool(settings,requestHandler);
     }
     QString host = settings->value("host").toString();
-    int port=settings->value("port").toInt();
+    quint16 port=settings->value("port").toUInt() & 0xFFFF;
     QTcpServer::listen(host.isEmpty() ? QHostAddress::Any : QHostAddress(host), port);
     if (!isListening())
     {
@@ -56,7 +56,7 @@ void HttpListener::close() {
     qDebug("HttpListener: closed");
     if (pool) {
         delete pool;
-        pool=NULL;
+        pool=nullptr;
     }
 }
 
@@ -65,7 +65,7 @@ void HttpListener::incomingConnection(tSocketDescriptor socketDescriptor) {
     qDebug("HttpListener: New connection");
 #endif
 
-    HttpConnectionHandler* freeHandler=NULL;
+    HttpConnectionHandler* freeHandler=nullptr;
     if (pool)
     {
         freeHandler=pool->getConnectionHandler();

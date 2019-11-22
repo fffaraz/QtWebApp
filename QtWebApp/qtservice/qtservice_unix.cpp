@@ -64,6 +64,7 @@
     typedef qintptr tSocketDescriptor;
 #else
     typedef int tSocketDescriptor;
+    #define Q_DECL_OVERRIDE
 #endif
 
 static QString encodeName(const QString &name, bool allowUpper = false)

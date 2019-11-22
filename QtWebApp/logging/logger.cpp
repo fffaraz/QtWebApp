@@ -13,7 +13,7 @@
 
 using namespace stefanfrings;
 
-Logger* Logger::defaultLogger=0;
+Logger* Logger::defaultLogger=nullptr;
 
 
 QThreadStorage<QHash<QString,QString>*> Logger::logVars;
@@ -92,11 +92,11 @@ Logger::~Logger()
     if (defaultLogger==this)
     {
 #if QT_VERSION >= 0x050000
-        qInstallMessageHandler(0);
+        qInstallMessageHandler(nullptr);
 #else
-        qInstallMsgHandler(0);
+        qInstallMsgHandler(nullptr);
 #endif
-        defaultLogger=0;
+        defaultLogger=nullptr;
     }
 }
 
@@ -137,7 +137,8 @@ void Logger::clear(const bool buffer, const bool variables)
     if (buffer && buffers.hasLocalData())
     {
         QList<LogMessage*>* buffer=buffers.localData();
-        while (buffer && !buffer->isEmpty()) {
+        while (buffer && !buffer->isEmpty())
+        {
             LogMessage* logMessage=buffer->takeLast();
             delete logMessage;
         }
@@ -155,13 +156,15 @@ void Logger::log(const QtMsgType type, const QString& message, const QString &fi
     mutex.lock();
 
     // If the buffer is enabled, write the message into it
-    if (bufferSize>0) {
+    if (bufferSize>0)
+    {
         // Create new thread local buffer, if necessary
-        if (!buffers.hasLocalData()) {
+        if (!buffers.hasLocalData())
+        {
             buffers.setLocalData(new QList<LogMessage*>());
         }
         QList<LogMessage*>* buffer=buffers.localData();
-        // Append the decorated log message
+        // Append the decorated log message to the buffer
         LogMessage* logMessage=new LogMessage(type,message,logVars.localData(),file,function,line);
         buffer->append(logMessage);
         // Delete oldest message if the buffer became too large
@@ -170,7 +173,11 @@ void Logger::log(const QtMsgType type, const QString& message, const QString &fi
             delete buffer->takeFirst();
         }
         // If the type of the message is high enough, print the whole buffer
-        if (type>=minLevel) {
+        // With one Exception: INFO messages are treated like DEBUG messages here
+        QtMsgType level=(type==QtInfoMsg?QtDebugMsg:type);
+        if (level>minLevel)
+        {
+            // Print the whole buffer content
             while (!buffer->isEmpty())
             {
                 LogMessage* logMessage=buffer->takeFirst();
@@ -181,7 +188,8 @@ void Logger::log(const QtMsgType type, const QString& message, const QString &fi
     }
 
     // Buffer is disabled, print the message if the type is high enough
-    else {
+    else
+    {
         if (type>=minLevel)
         {
             LogMessage logMessage(type,message,logVars.localData(),file,function,line);

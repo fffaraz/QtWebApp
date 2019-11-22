@@ -9,7 +9,7 @@
 
 using namespace stefanfrings;
 
-HttpSessionStore::HttpSessionStore(QSettings* settings, QObject* parent)
+HttpSessionStore::HttpSessionStore(const QSettings *settings, QObject* parent)
     :QObject(parent)
 {
     this->settings=settings;

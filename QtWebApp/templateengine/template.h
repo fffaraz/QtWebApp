@@ -97,7 +97,7 @@ public:
       @param source The template source text
       @param sourceName Name of the source file, used for logging
     */
-    Template(QString source, QString sourceName);
+    Template(const QString source, const QString sourceName);
 
     /**
       Constructor that reads the template from a file. Note that this class does not
@@ -108,7 +108,7 @@ public:
       @see TemplateLoader
       @see TemplateCache
     */
-    Template(QFile& file, QTextCodec* textCodec);
+    Template(QFile &file, const QTextCodec* textCodec);
 
     /**
       Replace a variable by the given value.
@@ -123,7 +123,7 @@ public:
       @param value new value
       @return The count of variables that have been processed
     */
-    int setVariable(QString name, QString value);
+    int setVariable(const QString name, const QString value);
 
     /**
       Set a condition. This affects tags with the syntax
@@ -137,7 +137,7 @@ public:
      @param value Value of the condition
      @return The count of conditions that have been processed
     */
-    int setCondition(QString name, bool value);
+    int setCondition(const QString name, bool value);
 
     /**
      Set number of repetitions of a loop.
@@ -150,13 +150,13 @@ public:
      @param repetitions The number of repetitions
      @return The number of loops that have been processed
     */
-    int loop(QString name, int repetitions);
+    int loop(QString name, const int repetitions);
 
     /**
      Enable warnings for missing tags
      @param enable Warnings are enabled, if true
     */
-    void enableWarnings(bool enable=true);
+    void enableWarnings(const bool enable=true);
 
 private:
 

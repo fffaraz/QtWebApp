@@ -8,14 +8,14 @@
 
 using namespace stefanfrings;
 
-Template::Template(QString source, QString sourceName)
+Template::Template(const QString source, const QString sourceName)
     : QString(source)
 {
     this->sourceName=sourceName;
     this->warnings=false;
 }
 
-Template::Template(QFile& file, QTextCodec* textCodec)
+Template::Template(QFile& file, const QTextCodec* textCodec)
 {
     this->warnings=false;
     sourceName=QFileInfo(file.fileName()).baseName();
@@ -36,7 +36,7 @@ Template::Template(QFile& file, QTextCodec* textCodec)
 }
 
 
-int Template::setVariable(QString name, QString value)
+int Template::setVariable(const QString name, const QString value)
 {
     int count=0;
     QString variable="{"+name+"}";
@@ -54,7 +54,7 @@ int Template::setVariable(QString name, QString value)
     return count;
 }
 
-int Template::setCondition(QString name, bool value)
+int Template::setCondition(const QString name, const bool value)
 {
     int count=0;
     QString startTag=QString("{if %1}").arg(name);
@@ -152,7 +152,7 @@ int Template::setCondition(QString name, bool value)
     return count;
 }
 
-int Template::loop(QString name, int repetitions)
+int Template::loop(const QString name, const int repetitions)
 {
     Q_ASSERT(repetitions>=0);
     int count=0;
@@ -236,7 +236,7 @@ int Template::loop(QString name, int repetitions)
     return count;
 }
 
-void Template::enableWarnings(bool enable)
+void Template::enableWarnings(const bool enable)
 {
     warnings=enable;
 }

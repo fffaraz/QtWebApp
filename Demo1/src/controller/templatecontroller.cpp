@@ -3,12 +3,10 @@
   @author Stefan Frings
 */
 
+#include "../global.h"
 #include "templatecontroller.h"
 #include "templatecache.h"
 #include "template.h"
-
-/** Cache for template files */
-extern TemplateCache* templateCache;
 
 TemplateController::TemplateController()
 {}

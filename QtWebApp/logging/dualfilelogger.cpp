@@ -7,7 +7,7 @@
 
 using namespace stefanfrings;
 
-DualFileLogger::DualFileLogger(QSettings* firstSettings, QSettings* secondSettings, const int refreshInterval, QObject* parent)
+DualFileLogger::DualFileLogger(QSettings *firstSettings, QSettings* secondSettings, const int refreshInterval, QObject* parent)
     :Logger(parent)
 {
      firstLogger=new FileLogger(firstSettings, refreshInterval, this);

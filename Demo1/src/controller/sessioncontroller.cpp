@@ -4,11 +4,9 @@
 */
 
 #include <QDateTime>
+#include "../global.h"
 #include "sessioncontroller.h"
 #include "httpsessionstore.h"
-
-/** Storage for session cookies */
-extern HttpSessionStore* sessionStore;
 
 SessionController::SessionController()
 {}

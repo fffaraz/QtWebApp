@@ -1,6 +1,35 @@
 Dont forget to update the release number also in
 QtWebApp.pro and httpserver/httpglobal.cpp.
 
+1.7.9
+20.06.2019
+INFO messages do not trigger writing out buffered log messages anymore when
+bufferSize>0 and minLevel>0.
+
+1.7.8
+05.02.2019
+HttpConnectionHandler closes the socket now in the thread of the socket.
+Headers and Body sent to the browser are now separated into individual ethernet packets.
+
+1.7.7
+04.02.2019
+HttpConnectionHandler creates a new Qthread instead of being itself a QThread.
+Improved formatting of thread ID in logger.
+
+1.7.6
+18.01.2019
+Code cleanup with const keywords and type conversions.
+Update Documentation.
+
+1.7.5
+17.01.2019
+Added content-types for *.xml and *.json to the StaticFileController.
+Fixed locking and memory leak in HttpSession.
+
+1.7.4
+24.05.2018
+Fixed two possible null-pointer references in case of broken HTTP requests.
+
 1.7.3
 25.04.2017
 Wait until all data are sent before closing connections.

@@ -48,7 +48,8 @@ public:
       @param function Name of the function where the message was generated
       @param line Line Number of the source file, where the message was generated
     */
-    LogMessage(const QtMsgType type, const QString& message, QHash<QString,QString>* logVars, const QString &file, const QString &function, const int line);
+    LogMessage(const QtMsgType type, const QString& message, const QHash<QString,QString>* logVars,
+               const QString &file, const QString &function, const int line);
 
     /**
       Returns the log message as decorated string.

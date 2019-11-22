@@ -12,7 +12,7 @@
 
 using namespace stefanfrings;
 
-TemplateLoader::TemplateLoader(QSettings* settings, QObject* parent)
+TemplateLoader::TemplateLoader(const QSettings *settings, QObject *parent)
     : QObject(parent)
 {
     templatePath=settings->value("path",".").toString();

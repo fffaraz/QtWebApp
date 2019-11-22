@@ -4,6 +4,7 @@
 */
 
 #include <QCoreApplication>
+#include "global.h"
 #include "requestmapper.h"
 #include "filelogger.h"
 #include "staticfilecontroller.h"
@@ -12,12 +13,6 @@
 #include "controller/formcontroller.h"
 #include "controller/fileuploadcontroller.h"
 #include "controller/sessioncontroller.h"
-
-/** Redirects log messages to a file */
-extern FileLogger* logger;
-
-/** Controller for static files */
-extern StaticFileController* staticFileController;
 
 RequestMapper::RequestMapper(QObject* parent)
     :HttpRequestHandler(parent)

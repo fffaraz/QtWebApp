@@ -47,8 +47,17 @@ class DECLSPEC StaticFileController : public HttpRequestHandler  {
     Q_DISABLE_COPY(StaticFileController)
 public:
 
-    /** Constructor */
-    StaticFileController(QSettings* settings, QObject* parent = NULL);
+    /**
+      Constructor.
+      @param settings Configuration settings, usually stored in an INI file. Must not be 0.
+      Settings are read from the current group, so the caller must have called settings->beginGroup().
+      Because the group must not change during runtime, it is recommended to provide a
+      separate QSettings instance that is not used by other parts of the program.
+      The StaticFileController does not take over ownership of the QSettings instance, so the
+      caller should destroy it during shutdown.
+      @param parent Parent object
+     */
+    StaticFileController(const QSettings* settings, QObject* parent = nullptr);
 
     /** Generates the response */
     void service(HttpRequest& request, HttpResponse& response);
@@ -83,7 +92,7 @@ private:
     QMutex mutex;
 
     /** Set a content-type header in the response depending on the ending of the filename */
-    void setContentType(QString file, HttpResponse& response) const;
+    void setContentType(const QString file, HttpResponse &response) const;
 };
 
 } // end of namespace

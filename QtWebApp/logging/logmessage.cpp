@@ -8,7 +8,7 @@
 
 using namespace stefanfrings;
 
-LogMessage::LogMessage(const QtMsgType type, const QString& message, QHash<QString, QString>* logVars, const QString &file, const QString &function, const int line)
+LogMessage::LogMessage(const QtMsgType type, const QString& message, const QHash<QString, QString> *logVars, const QString &file, const QString &function, const int line)
 {
     this->type=type;
     this->message=message;
@@ -59,8 +59,6 @@ QString LogMessage::toString(const QString& msgFormat, const QString& timestampF
             decorated.replace("{type}","INFO    ");
             break;
     #endif
-        default:
-            decorated.replace("{type}",typeNr);
     }
 
     decorated.replace("{file}",file);
@@ -68,7 +66,8 @@ QString LogMessage::toString(const QString& msgFormat, const QString& timestampF
     decorated.replace("{line}",QString::number(line));
 
     QString threadId;
-    threadId.setNum((unsigned long)QThread::currentThreadId());
+    threadId.sprintf("%p", QThread::currentThreadId());
+    //threadId.setNum((uintptr_t)QThread::currentThreadId());
     decorated.replace("{thread}",threadId);
 
     // Fill in variables
