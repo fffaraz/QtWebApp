@@ -4,6 +4,8 @@ QtWebApp is a HTTP server library in C++, based on Qt Framework.
 
 Fork from Stefan's QtWebApp: http://stefanfrings.de/qtwebapp/index-en.html
 
+https://github.com/StefanFrings/QtWebApp
+
 ### Tutorial
 
 * http://stefanfrings.de/qtwebapp/tutorial/index.html
