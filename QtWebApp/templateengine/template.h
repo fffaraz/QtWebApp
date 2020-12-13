@@ -43,10 +43,10 @@ namespace stefanfrings {
  t.setVariable("username", "Stefan");
  t.setCondition("locked",false);
  t.loop("user",2);
- t.setVariable("user0.name,"Markus");
- t.setVariable("user0.time,"8:30");
- t.setVariable("user1.name,"Roland");
- t.setVariable("user1.time,"8:45");
+ t.setVariable("user0.name","Markus");
+ t.setVariable("user0.time","8:30");
+ t.setVariable("user1.name","Roland");
+ t.setVariable("user1.time","8:45");
  </pre></code></p>
  <p>
  The code example above shows how variable within loops are numbered.

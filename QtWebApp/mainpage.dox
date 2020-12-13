@@ -2,7 +2,7 @@
   @mainpage
   @author Stefan Frings
   QtWebApp supports you in writing server-side web application in C++
-  based on the Qt toolkit. It is a light-weight implementation inspired
+  based on the Qt framework. It is a light-weight implementation inspired
   by Java Servlets.
   <p>
   Features:
@@ -36,5 +36,9 @@
   <p>
   To set up a HA system, I recommend the use of an
   an Apache HTTP server with proxy balancer and sticky sessions.
+  <p>
+  QtWebApp is published under the license LGPL v3.<br>
+  Author: Stefan Frings<br>
+  http://stefanfrings.de/qtwebapp
 */
 

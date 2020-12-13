@@ -1,6 +1,17 @@
 Dont forget to update the release number also in
 QtWebApp.pro and httpserver/httpglobal.cpp.
 
+1.7.11
+28.12.2019
+Fix Http Headers are not properly received if the two characters of
+a line-break (\r\n) were not received together in the same ethernet
+package.
+
+1.7.10
+04.12.2019
+Add support for other SSL implementations than OpenSSL (as far Qt supports it).
+Fix log bufffer was triggered only by severities above minLevel (should be "at least" minLevel).
+
 1.7.9
 20.06.2019
 INFO messages do not trigger writing out buffered log messages anymore when

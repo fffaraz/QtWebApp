@@ -175,7 +175,7 @@ void Logger::log(const QtMsgType type, const QString& message, const QString &fi
         // If the type of the message is high enough, print the whole buffer
         // With one Exception: INFO messages are treated like DEBUG messages here
         QtMsgType level=(type==QtInfoMsg?QtDebugMsg:type);
-        if (level>minLevel)
+        if (level>=minLevel)
         {
             // Print the whole buffer content
             while (!buffer->isEmpty())

@@ -6,7 +6,7 @@
 #ifndef HTTPCONNECTIONHANDLER_H
 #define HTTPCONNECTIONHANDLER_H
 
-#ifndef QT_NO_OPENSSL
+#ifndef QT_NO_SSL
    #include <QSslConfiguration>
 #endif
 #include <QTcpSocket>
@@ -27,7 +27,7 @@ namespace stefanfrings {
 #endif
 
 /** Alias for QSslConfiguration if OpenSSL is not supported */
-#ifdef QT_NO_OPENSSL
+#ifdef QT_NO_SSL
   #define QSslConfiguration QObject
 #endif
 

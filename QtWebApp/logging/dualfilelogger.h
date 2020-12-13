@@ -16,7 +16,7 @@
 namespace stefanfrings {
 
 /**
-  Logs messages into two log files simultaneously.
+  Writes log messages into two log files simultaneously.
   I recommend to configure:
   - One "main" logfile with minLevel=1 or 2 and bufferSize=0. This file is for the operator to see when a problem occured.
   - A second "debug" logfile with minLevel=1 or 2 and bufferSize=100. This file is for the developer who may need more details (the debug messages) about the
