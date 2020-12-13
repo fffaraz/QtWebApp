@@ -39,7 +39,7 @@ void MyRequestHandler::service(HttpRequest& request, HttpResponse& response)
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc,argv);
-        
+
     new HttpListener(
         new QSettings("configfile.ini",QSettings::IniFormat,&app),
         new MyRequestHandler(&app),
