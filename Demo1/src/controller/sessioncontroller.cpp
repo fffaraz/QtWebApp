@@ -14,7 +14,7 @@ SessionController::SessionController()
 void SessionController::service(HttpRequest& request, HttpResponse& response)
 {
 
-    response.setHeader("Content-Type", "text/html; charset=ISO-8859-1");
+    response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
     // Get current session, or create a new one
     HttpSession session=sessionStore->getSession(request,response);
@@ -27,7 +27,7 @@ void SessionController::service(HttpRequest& request, HttpResponse& response)
     {
         QDateTime startTime=session.get("startTime").toDateTime();
         response.write("<html><body>Your session started ");
-        response.write(startTime.toString().toLatin1());
+        response.write(startTime.toString().toUtf8());
         response.write("</body></html>");
     }
 

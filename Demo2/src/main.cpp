@@ -12,53 +12,8 @@
 
 using namespace stefanfrings;
 
-/** Logger class */
-FileLogger* logger;
-
-/** Search the configuration file */
-QString searchConfigFile()
-{
-    QString binDir=QCoreApplication::applicationDirPath();
-    QString appName=QCoreApplication::applicationName();
-    QString fileName(appName+".ini");
-
-    QStringList searchList;
-    searchList.append(binDir);
-    searchList.append(binDir+"/etc");
-    searchList.append(binDir+"/../etc");
-    searchList.append(binDir+"/../../etc"); // for development without shadow build
-    searchList.append(binDir+"/../"+appName+"/etc"); // for development with shadow build
-    searchList.append(binDir+"/../../"+appName+"/etc"); // for development with shadow build
-    searchList.append(binDir+"/../../../"+appName+"/etc"); // for development with shadow build
-    searchList.append(binDir+"/../../../../"+appName+"/etc"); // for development with shadow build
-    searchList.append(binDir+"/../../../../../"+appName+"/etc"); // for development with shadow build
-    searchList.append(QDir::rootPath()+"etc/opt");
-    searchList.append(QDir::rootPath()+"etc");
-
-    foreach (QString dir, searchList)
-    {
-        QFile file(dir+"/"+fileName);
-        if (file.exists())
-        {
-            // found
-            fileName=QDir(file.fileName()).canonicalPath();
-            qDebug("Using config file %s",qPrintable(fileName));
-            return fileName;
-        }
-    }
-
-    // not found
-    foreach (QString dir, searchList)
-    {
-        qWarning("%s/%s not found",qPrintable(dir),qPrintable(fileName));
-    }
-    qFatal("Cannot find config file %s",qPrintable(fileName));
-    return 0;
-}
-
 /**
   Entry point of the program.
-  Quick and dirty, without cleaning up on exit (which is Ok for this simple program).
 */
 int main(int argc, char *argv[])
 {
@@ -66,27 +21,24 @@ int main(int argc, char *argv[])
     // Initialize the core application
     QCoreApplication app(argc, argv);
     app.setApplicationName("Demo2");
-    app.setOrganizationName("Butterfly");
 
-    // Find the configuration file
-    QString configFileName=searchConfigFile();
+    // Collect hardcoded configarion settings
+    QSettings* settings=new QSettings(&app);
+    // settings->setValue("host","192.168.0.100");
+    settings->setValue("port","8080");
+    settings->setValue("minThreads","4");
+    settings->setValue("maxThreads","100");
+    settings->setValue("cleanupInterval","60000");
+    settings->setValue("readTimeout","60000");
+    settings->setValue("maxRequestSize","16000");
+    settings->setValue("maxMultiPartSize","10000000");
+    // settings->setValue("sslKeyFile","ssl/my.key");
+    // settings->setValue("sslCertFile","ssl/my.cert");
 
-    // Configure logging into a file
-    /*
-    QSettings* logSettings=new QSettings(configFileName,QSettings::IniFormat,&app);
-    logSettings->beginGroup("logging");
-    logger=new FileLogger(logSettings,10000,&app);
-    logger->installMsgHandler();
-    */
-
-    // Configure and start the TCP listener
-    QSettings* listenerSettings=new QSettings(configFileName,QSettings::IniFormat,&app);
-    listenerSettings->beginGroup("listener");
-    new HttpListener(listenerSettings,new RequestHandler(&app),&app);
+    // Configure and start the TCP listener    
+    new HttpListener(settings,new RequestHandler(&app),&app);
 
     qWarning("Application has started");
-
     app.exec();
-
     qWarning("Application has stopped");
 }

@@ -13,14 +13,19 @@ TemplateController::TemplateController()
 
 void TemplateController::service(HttpRequest& request, HttpResponse& response)
 {
-    response.setHeader("Content-Type", "text/html; charset=ISO-8859-1");
+    response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
     Template t=templateCache->getTemplate("demo",request.getHeader("Accept-Language"));
     t.enableWarnings();
     t.setVariable("path",request.getPath());
 
-    QMap<QByteArray,QByteArray> headers=request.getHeaderMap();
-    QMapIterator<QByteArray,QByteArray> iterator(headers);
+    QMultiMap<QByteArray,QByteArray> headers=request.getHeaderMap();
+    #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        QMultiMapIterator<QByteArray,QByteArray> iterator(headers);
+    #else
+        QMapIterator<QByteArray,QByteArray> iterator(headers);
+    #endif
+
     t.loop("header",headers.size());
     int i=0;
     while (iterator.hasNext())
@@ -31,5 +36,5 @@ void TemplateController::service(HttpRequest& request, HttpResponse& response)
         ++i;
     }
 
-    response.write(t.toLatin1(),true);
+    response.write(t.toUtf8(),true);
 }

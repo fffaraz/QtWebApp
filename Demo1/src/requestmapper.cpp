@@ -13,6 +13,7 @@
 #include "controller/formcontroller.h"
 #include "controller/fileuploadcontroller.h"
 #include "controller/sessioncontroller.h"
+#include "controller/logincontroller.h"
 
 RequestMapper::RequestMapper(QObject* parent)
     :HttpRequestHandler(parent)
@@ -57,6 +58,11 @@ void RequestMapper::service(HttpRequest& request, HttpResponse& response)
     else if (path.startsWith("/session"))
     {
         SessionController().service(request, response);
+    }
+
+    else if (path.startsWith("/login"))
+    {
+        LoginController().service(request, response);
     }
 
     // All other pathes are mapped to the static file controller.

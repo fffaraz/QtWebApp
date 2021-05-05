@@ -18,8 +18,8 @@ namespace stefanfrings {
 /**
   Writes log messages into two log files simultaneously.
   I recommend to configure:
-  - One "main" logfile with minLevel=1 or 2 and bufferSize=0. This file is for the operator to see when a problem occured.
-  - A second "debug" logfile with minLevel=1 or 2 and bufferSize=100. This file is for the developer who may need more details (the debug messages) about the
+  - The primary logfile with minLevel=INFO or WARNING and bufferSize=0. This file is for the operator to see when a problem occured.
+  - The secondary logfile with minLevel=WARNING or ERROR and bufferSize=100. This file is for the developer who may need more details (the debug messages) about the
   situation that leaded to the error.
 
   @see FileLogger for a description of the two underlying loggers.
@@ -32,14 +32,14 @@ public:
 
     /**
       Constructor.
-      @param firstSettings Configuration settings for the first logfile, usually stored in an INI file.
+      @param firstSettings Configuration settings for the primary FileLogger instance, usually stored in an INI file.
       Must not be 0.
       Settings are read from the current group, so the caller must have called settings->beginGroup().
       Because the group must not change during runtime, it is recommended to provide a
       separate QSettings instance that is not used by other parts of the program.
       The FileLogger does not take over ownership of the QSettings instance, so the caller
       should destroy it during shutdown.
-      @param secondSettings Same as firstSettings, but for the second log file.
+      @param secondSettings Same as firstSettings, but for the secondary FileLogger instance.
       @param refreshInterval Interval of checking for changed config settings in msec, or 0=disabled
       @param parent Parent object.
     */

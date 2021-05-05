@@ -1,9 +1,9 @@
 # Build this project to generate a shared library (*.dll or *.so).
 
 TARGET = QtWebApp
+VERSION = 1.8.3
 TEMPLATE = lib
 QT -= gui
-VERSION = 1.7.11
 
 mac {
    QMAKE_MAC_SDK = macosx10.10
@@ -24,10 +24,8 @@ CONFIG(debug, debug|release) {
     unix:!mac:  TARGET = $$join(TARGET,,,d)
 }
 
-DISTFILES += doc/* mainpage.dox Doxyfile
-OTHER_FILES += ../readme.txt
+DISTFILES += mainpage.dox Doxyfile ../CHANGELOG.txt ../LICENSE.txt ../README.txt
 
-include(qtservice/qtservice.pri)
 include(logging/logging.pri)
 include(httpserver/httpserver.pri)
 include(templateengine/templateengine.pri)

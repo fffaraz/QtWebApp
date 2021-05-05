@@ -22,9 +22,7 @@ HttpConnectionHandler::HttpConnectionHandler(const QSettings *settings, HttpRequ
     // execute signals in a new thread
     thread = new QThread();
     thread->start();
-    #ifdef SUPERVERBOSE
-        qDebug("HttpConnectionHandler (%p): thread started", static_cast<void*>(this));
-    #endif
+    qDebug("HttpConnectionHandler (%p): thread started", static_cast<void*>(this));
     moveToThread(thread);
     readTimer.moveToThread(thread);
     readTimer.setSingleShot(true);
@@ -39,9 +37,7 @@ HttpConnectionHandler::HttpConnectionHandler(const QSettings *settings, HttpRequ
     connect(&readTimer, SIGNAL(timeout()), SLOT(readTimeout()));
     connect(thread, SIGNAL(finished()), this, SLOT(thread_done()));
 
-    #ifdef SUPERVERBOSE
-        qDebug("HttpConnectionHandler (%p): constructed", static_cast<void*>(this));
-    #endif
+    qDebug("HttpConnectionHandler (%p): constructed", static_cast<void*>(this));
 }
 
 
@@ -83,9 +79,7 @@ void HttpConnectionHandler::createSocket()
 
 void HttpConnectionHandler::handleConnection(tSocketDescriptor socketDescriptor)
 {
-    #ifdef SUPERVERBOSE
-        qDebug("HttpConnectionHandler (%p): handle new connection", static_cast<void*>(this));
-    #endif
+    qDebug("HttpConnectionHandler (%p): handle new connection", static_cast<void*>(this));
     busy = true;
     Q_ASSERT(socket->isOpen()==false); // if not, then the handler is already busy
 
@@ -146,9 +140,7 @@ void HttpConnectionHandler::readTimeout()
 
 void HttpConnectionHandler::disconnected()
 {
-    #ifdef SUPERVERBOSE
-        qDebug("HttpConnectionHandler (%p): disconnected", static_cast<void*>(this));
-    #endif
+    qDebug("HttpConnectionHandler (%p): disconnected", static_cast<void*>(this));
     socket->close();
     readTimer.stop();
     busy = false;
@@ -197,9 +189,7 @@ void HttpConnectionHandler::read()
         if (currentRequest->getStatus()==HttpRequest::complete)
         {
             readTimer.stop();
-            #ifdef SUPERVERBOSE
-                qDebug("HttpConnectionHandler (%p): received request",static_cast<void*>(this));
-            #endif
+            qDebug("HttpConnectionHandler (%p): received request",static_cast<void*>(this));
 
             // Copy the Connection:close header to the response
             HttpResponse response(socket);
@@ -238,9 +228,7 @@ void HttpConnectionHandler::read()
                 response.write(QByteArray(),true);
             }
 
-            #ifdef SUPERVERBOSE
-                qDebug("HttpConnectionHandler (%p): finished request",static_cast<void*>(this));
-            #endif
+            qDebug("HttpConnectionHandler (%p): finished request",static_cast<void*>(this));
 
             // Find out whether the connection must be closed
             if (!closeConnection)

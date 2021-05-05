@@ -26,12 +26,12 @@ namespace stefanfrings {
   maxSize=1000000
   maxBackups=2
   bufferSize=0
-  minLevel=0
+  minLevel=WARNING
   msgformat={timestamp} {typeNr} {type} thread={thread}: {msg}
   timestampFormat=dd.MM.yyyy hh:mm:ss.zzz  
   </pre></code>
 
-  - Possible log levels are: 0=DEBUG, 1=WARNING, 2=CRITICAL, 3=FATAL, 4=INFO
+  - Possible log levels are: ALL/DEBUG=0, INFO=4, WARN/WARNING=1, ERROR/CRITICAL=2, FATAL=3
   - fileName is the name of the log file, relative to the directory of the settings file.
     In case of windows, if the settings are in the registry, the path is relative to the current
     working directory.

@@ -7,6 +7,7 @@ QT = core network
 CONFIG += console
 
 HEADERS += \
+           src/controller/logincontroller.h \
            src/global.h \
            src/requestmapper.h \
            src/controller/dumpcontroller.h \
@@ -16,6 +17,7 @@ HEADERS += \
            src/controller/sessioncontroller.h
 
 SOURCES += src/main.cpp \
+           src/controller/logincontroller.cpp \
            src/global.cpp \
            src/requestmapper.cpp \
            src/controller/dumpcontroller.cpp \
@@ -24,7 +26,9 @@ SOURCES += src/main.cpp \
            src/controller/fileuploadcontroller.cpp \
            src/controller/sessioncontroller.cpp
 
-OTHER_FILES += etc/* etc/docroot/* etc/templates/* etc/ssl/* logs/* ../readme.txt
+OTHER_FILES += etc/* etc/docroot/* etc/templates/* etc/ssl/* logs/*
+
+DISTFILES += ../CHANGELOG.txt ../LICENSE.txt ../README.txt
 
 #---------------------------------------------------------------------------------------
 # The following lines include the sources of the QtWebAppLib library
@@ -33,4 +37,4 @@ OTHER_FILES += etc/* etc/docroot/* etc/templates/* etc/ssl/* logs/* ../readme.tx
 include(../QtWebApp/logging/logging.pri)
 include(../QtWebApp/httpserver/httpserver.pri)
 include(../QtWebApp/templateengine/templateengine.pri)
-# Not used: include(../QtWebApp/qtservice/qtservice.pri)
+

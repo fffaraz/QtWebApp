@@ -14,7 +14,7 @@ DumpController::DumpController()
 void DumpController::service(HttpRequest& request, HttpResponse& response)
 {
 
-    response.setHeader("Content-Type", "text/html; charset=ISO-8859-1");
+    response.setHeader("Content-Type", "text/html; charset=UTF-8");
     response.setCookie(HttpCookie("firstCookie","hello",600,QByteArray(),QByteArray(),QByteArray(),false,true));
     response.setCookie(HttpCookie("secondCookie","world",600));
 
@@ -28,7 +28,11 @@ void DumpController::service(HttpRequest& request, HttpResponse& response)
     body.append(request.getVersion());
 
     body.append("<p><b>Headers:</b>");
-    QMapIterator<QByteArray,QByteArray> i(request.getHeaderMap());
+    #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        QMultiMapIterator<QByteArray,QByteArray> i(request.getHeaderMap());
+    #else
+        QMapIterator<QByteArray,QByteArray> i(request.getHeaderMap());
+    #endif
     while (i.hasNext())
     {
         i.next();
@@ -39,7 +43,12 @@ void DumpController::service(HttpRequest& request, HttpResponse& response)
     }
 
     body.append("<p><b>Parameters:</b>");
-    i=QMapIterator<QByteArray,QByteArray>(request.getParameterMap());
+
+    #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        i=QMultiMapIterator<QByteArray,QByteArray>(request.getParameterMap());
+    #else
+        i=QMapIterator<QByteArray,QByteArray>(request.getParameterMap());
+    #endif
     while (i.hasNext())
     {
         i.next();
@@ -50,14 +59,14 @@ void DumpController::service(HttpRequest& request, HttpResponse& response)
     }
 
     body.append("<p><b>Cookies:</b>");
-    i=QMapIterator<QByteArray,QByteArray>(request.getCookieMap());
-    while (i.hasNext())
+    QMapIterator<QByteArray,QByteArray> i2 = QMapIterator<QByteArray,QByteArray>(request.getCookieMap());
+    while (i2.hasNext())
     {
-        i.next();
+        i2.next();
         body.append("<br>");
-        body.append(i.key());
+        body.append(i2.key());
         body.append("=");
-        body.append(i.value());
+        body.append(i2.value());
     }
 
     body.append("<p><b>Body:</b><br>");

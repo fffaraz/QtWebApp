@@ -41,9 +41,7 @@ void HttpRequest::readRequest(QTcpSocket* socket)
     lineBuffer.clear();
     if (!newData.isEmpty())
     {
-        #ifdef SUPERVERBOSE
-            qDebug("HttpRequest: from %s: %s",qPrintable(socket->peerAddress().toString()),newData.data());
-        #endif
+        qDebug("HttpRequest: from %s: %s",qPrintable(socket->peerAddress().toString()),newData.data());
         QList<QByteArray> list=newData.split(' ');
         if (list.count()!=3 || !list.at(2).contains("HTTP"))
         {
@@ -484,7 +482,8 @@ void HttpRequest::parseMultiPartFile()
                         parameters.insert(fieldName,fileName);
                         qDebug("HttpRequest: set parameter %s=%s",fieldName.data(),fileName.data());
                         uploadedFiles.insert(fieldName,uploadedFile);
-                        qDebug("HttpRequest: uploaded file size is %lli",uploadedFile->size());
+                        long int fileSize=(long int) uploadedFile->size();
+                        qDebug("HttpRequest: uploaded file size is %li",fileSize);
                     }
                     else
                     {

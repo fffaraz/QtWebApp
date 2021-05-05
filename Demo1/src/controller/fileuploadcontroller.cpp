@@ -31,7 +31,7 @@ void FileUploadController::service(HttpRequest& request, HttpResponse& response)
 
     else
     {
-        response.setHeader("Content-Type", "text/html; charset=ISO-8859-1");
+        response.setHeader("Content-Type", "text/html; charset=UTF-8");
         response.write("<html><body>");
         response.write("Upload a JPEG image file<p>");
         response.write("<form method=\"post\" enctype=\"multipart/form-data\">");

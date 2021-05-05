@@ -25,10 +25,8 @@
       - automatic backups and file rotation
       - configurable message format, see stefanfrings::LogMessage
       - messages may contain thread-local info variables
-      - optional ring-buffer to improve performance and reduce disk usage
+      - optional buffer to improve performance and reduce disk usage
       - apply configuration changes without restart
-  - The QtService class
-      - Runs the application as a Windows service or Unix daemon
 
   If you write a real application based on this source, take a look into the Demo
   applications. They set up a single listener on port 8080, however multiple
