@@ -23,7 +23,7 @@ This short example demonstrates how to use the library:
 void MyRequestHandler::service(HttpRequest& request, HttpResponse& response)
 {
     // Get a request parameters
-    QByteArray username=request.getParameter("username");
+    QByteArray username = request.getParameter("username");
 
     // Set a response header
     response.setHeader("Content-Type", "text/html; charset=UTF-8");
@@ -39,7 +39,7 @@ void MyRequestHandler::service(HttpRequest& request, HttpResponse& response)
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc,argv);
-        
+
     new HttpListener(
         new QSettings("configfile.ini",QSettings::IniFormat,&app),
         new MyRequestHandler(&app),
