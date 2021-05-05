@@ -1,18 +1,16 @@
-# QtWebApp
-
-QtWebApp is a HTTP server library in C++, based on Qt Framework.
+# QtWebApp HTTP Server in C++
 
 Fork from Stefan's QtWebApp: http://stefanfrings.de/qtwebapp/index-en.html
 
-https://github.com/StefanFrings/QtWebApp
+QtWepApp is a HTTP server library in C++, inspired by Java Servlets. For Linux, Windows, Mac OS and many other operating systems that the Qt Framework supports.
 
-### Tutorial
+QtWebApp contains the following components:
 
-* http://stefanfrings.de/qtwebapp/tutorial/index.html
-
-### API documentation
-
-* http://stefanfrings.de/qtwebapp/api/index.html
+* HTTP(S) Server
+* Template Engine
+* File Logger
+* These components can be used independently of each other.
+* The logger improves disk space and performance by retaining debug messages in memory until an error occurs. No debug messages are written as long everything works fine. Changes to the configuration of the logger become active automatically without program restart. A very small example:
 
 ### Usage
 
@@ -49,8 +47,17 @@ int main(int argc, char *argv[])
 }
 ```
 
+### Tutorial
+
+* http://stefanfrings.de/qtwebapp/tutorial/index.html
+
+### API documentation
+
+* http://stefanfrings.de/qtwebapp/api/index.html
+
 ### See also
 
+* https://github.com/StefanFrings/QtWebApp
 * https://github.com/azadkuh/qhttp
 * https://github.com/BoostGSoC14/boost.http
 * https://github.com/etr/libhttpserver
