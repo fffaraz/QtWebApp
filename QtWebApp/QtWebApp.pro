@@ -24,6 +24,10 @@ CONFIG(debug, debug|release) {
     unix:!mac:  TARGET = $$join(TARGET,,,d)
 }
 
+CONFIG(release, debug|release) {
+    DEFINES += QT_NO_DEBUG_OUTPUT
+}
+
 DISTFILES += mainpage.dox Doxyfile ../CHANGELOG.txt ../LICENSE.txt ../README.txt
 
 include(logging/logging.pri)
