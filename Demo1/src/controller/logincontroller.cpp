@@ -27,13 +27,21 @@ void LoginController::service(HttpRequest& request, HttpResponse& response)
         QByteArray name=parts[0];
         QByteArray password=parts[1];
 
-        response.setHeader("Content-Type", "text/html; charset=UTF-8");
+        if (name.compare("Spongebob")!=0 || password.compare("secret")!=0)
+        {
+            response.setStatus(401,"Unauthorized");
+            response.setHeader("WWW-Authenticate","Basic realm=Please login with any name and password");
+        }
+        else
+        {
+            response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
-        response.write("<html><body>");
-        response.write("You logged in as name=");
-        response.write(name);
-        response.write("with password=");
-        response.write(password);
-        response.write("</body></html>", true);
+            response.write("<html><body>");
+            response.write("You logged in as name=");
+            response.write(name);
+            response.write("with password=");
+            response.write(password);
+            response.write("</body></html>", true);
+        }
     }
 }
