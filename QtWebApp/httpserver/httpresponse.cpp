@@ -153,7 +153,23 @@ void HttpResponse::write(QByteArray data, bool lastPart)
         {
             writeToSocket("0\r\n\r\n");
         }
-        socket->flush();
+        // flush will fail if the page expires so we need to make sure the socket is valid
+        if (socket->isValid())
+        {
+            // checking isValid helps some cases, what is needed is to refresh the page
+            if (socket->state() == QAbstractSocket::ConnectingState)
+            {
+                try
+                {
+                    socket->flush();
+                }
+                catch (...)
+                {
+                    // FIXME not sure what to do, but I still get here, but not as much without the checks
+                }
+            }
+        }
+
         sentLastPart=true;
     }
 }

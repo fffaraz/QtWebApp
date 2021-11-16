@@ -14,6 +14,7 @@
 #include "controller/fileuploadcontroller.h"
 #include "controller/sessioncontroller.h"
 #include "controller/logincontroller.h"
+#include "controller/logoutcontroller.h"
 
 RequestMapper::RequestMapper(QObject* parent)
     :HttpRequestHandler(parent)
@@ -39,36 +40,34 @@ void RequestMapper::service(HttpRequest& request, HttpResponse& response)
     {        
         DumpController().service(request, response);
     }
-
     else if (path.startsWith("/template"))
     {
         TemplateController().service(request, response);
     }
-
     else if (path.startsWith("/form"))
     {
         FormController().service(request, response);
     }
-
     else if (path.startsWith("/file"))
     {
         FileUploadController().service(request, response);
     }
-
     else if (path.startsWith("/session"))
     {
         SessionController().service(request, response);
     }
-
     else if (path.startsWith("/login"))
     {
         LoginController().service(request, response);
     }
-
-    // All other pathes are mapped to the static file controller.
-    // In this case, a single instance is used for multiple requests.
+    else if (path.startsWith("/logout"))
+    {
+        LogoutController().service(request, response);
+    }
     else
     {
+        // All other pathes are mapped to the static file controller.
+        // In this case, a single instance is used for multiple requests.
         staticFileController->service(request, response);
     }
 

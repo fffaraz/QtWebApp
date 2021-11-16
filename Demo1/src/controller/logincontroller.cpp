@@ -6,42 +6,28 @@
 #include <QDateTime>
 #include "../global.h"
 #include "logincontroller.h"
+#include "../logincredentials.h"
 
 LoginController::LoginController()
 {}
 
 void LoginController::service(HttpRequest& request, HttpResponse& response)
 {
-    QByteArray auth = request.getHeader("Authorization");
-    if (auth.isNull())
+    LoginCredentials *myLoginCredentials = new LoginCredentials(this);
+    if (myLoginCredentials->validate(request,response))
+    {
+        response.setHeader("Content-Type", "text/html; charset=UTF-8");
+        response.write("<html><body>");
+        response.write("You logged in as name=");
+        response.write(myLoginCredentials->getUserName());
+        response.write("with password=");
+        response.write(myLoginCredentials->getPassword());
+        response.write("</body></html>", true);
+    }
+    else
     {
         qInfo("User is not logged in");
         response.setStatus(401,"Unauthorized");
         response.setHeader("WWW-Authenticate","Basic realm=Please login with any name and password");
-    }
-    else
-    {
-        QByteArray decoded = QByteArray::fromBase64(auth.mid(6)); // Skip the first 6 characters ("Basic ")
-        qInfo("Authorization request from %s",qPrintable(decoded));
-        QList<QByteArray> parts = decoded.split(':');
-        QByteArray name=parts[0];
-        QByteArray password=parts[1];
-
-        if (name.compare("Spongebob")!=0 || password.compare("secret")!=0)
-        {
-            response.setStatus(401,"Unauthorized");
-            response.setHeader("WWW-Authenticate","Basic realm=Please login with any name and password");
-        }
-        else
-        {
-            response.setHeader("Content-Type", "text/html; charset=UTF-8");
-
-            response.write("<html><body>");
-            response.write("You logged in as name=");
-            response.write(name);
-            response.write("with password=");
-            response.write(password);
-            response.write("</body></html>", true);
-        }
     }
 }

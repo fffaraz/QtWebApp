@@ -4,42 +4,50 @@
 */
 
 #include "fileuploadcontroller.h"
+#include "../logincredentials.h"
 
 FileUploadController::FileUploadController()
 {}
 
 void FileUploadController::service(HttpRequest& request, HttpResponse& response)
 {
-
-    if (request.getParameter("action")=="show")
+    LoginCredentials *myLoginCredentials = new LoginCredentials(this);
+    if (myLoginCredentials->validate(request, response))
     {
-        response.setHeader("Content-Type", "image/jpeg");
-        QTemporaryFile* file=request.getUploadedFile("file1");
-        if (file)
+        if (request.getParameter("action")=="show")
         {
-            while (!file->atEnd() && !file->error())
+            response.setHeader("Content-Type", "image/jpeg");
+            QTemporaryFile* file=request.getUploadedFile("file1");
+            if (file)
             {
-                QByteArray buffer=file->read(65536);
-                response.write(buffer);
+                while (!file->atEnd() && !file->error())
+                {
+                    QByteArray buffer=file->read(65536);
+                    response.write(buffer);
+                }
+            }
+            else
+            {
+                response.write("upload failed");
             }
         }
         else
         {
-            response.write("upload failed");
+            response.setHeader("Content-Type", "text/html; charset=UTF-8");
+            response.write("<html><body>");
+            response.write("Upload a JPEG image file<p>");
+            response.write("<form method=\"post\" enctype=\"multipart/form-data\">");
+            response.write("  <input type=\"hidden\" name=\"action\" value=\"show\">");
+            response.write("  File: <input type=\"file\" name=\"file1\"><br>");
+            response.write("  <input type=\"submit\">");
+            response.write("</form>");
+            response.write("</body></html>",true);
         }
     }
-
     else
     {
-        response.setHeader("Content-Type", "text/html; charset=UTF-8");
-        response.write("<html><body>");
-        response.write("Upload a JPEG image file<p>");
-        response.write("<form method=\"post\" enctype=\"multipart/form-data\">");
-        response.write("  <input type=\"hidden\" name=\"action\" value=\"show\">");
-        response.write("  File: <input type=\"file\" name=\"file1\"><br>");
-        response.write("  <input type=\"submit\">");
-        response.write("</form>");
-        response.write("</body></html>",true);
+        qInfo("User is not logged in");
+        response.setStatus(401,"Unauthorized");
+        response.setHeader("WWW-Authenticate","Basic realm=Please login with any name and password");
     }
 }
-

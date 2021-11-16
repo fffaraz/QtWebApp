@@ -8,7 +8,9 @@ CONFIG += console
 
 HEADERS += \
            src/controller/logincontroller.h \
+           src/controller/logoutcontroller.h \
            src/global.h \
+           src/logincredentials.h \
            src/requestmapper.h \
            src/controller/dumpcontroller.h \
            src/controller/templatecontroller.h \
@@ -18,7 +20,9 @@ HEADERS += \
 
 SOURCES += src/main.cpp \
            src/controller/logincontroller.cpp \
+           src/controller/logoutcontroller.cpp \
            src/global.cpp \
+           src/logincredentials.cpp \
            src/requestmapper.cpp \
            src/controller/dumpcontroller.cpp \
            src/controller/templatecontroller.cpp \
