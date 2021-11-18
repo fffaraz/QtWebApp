@@ -1,6 +1,10 @@
 Dont forget to update the release number also in
 QtWebApp.pro and httpserver/httpglobal.cpp.
 
+1.8.4
+29.10.2021
+Add Content-Length header to static file controller.
+
 1.8.3
 21.03.2021
 The minLevel for logging can now be configured as string:
