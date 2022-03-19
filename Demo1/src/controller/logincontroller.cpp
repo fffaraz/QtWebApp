@@ -32,7 +32,7 @@ void LoginController::service(HttpRequest& request, HttpResponse& response)
         response.write("<html><body>");
         response.write("You logged in as name=");
         response.write(name);
-        response.write("with password=");
+        response.write(" with password=");
         response.write(password);
         response.write("</body></html>", true);
     }

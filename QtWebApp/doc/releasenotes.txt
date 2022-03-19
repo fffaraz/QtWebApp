@@ -1,6 +1,10 @@
 Dont forget to update the release number also in
 QtWebApp.pro and httpserver/httpglobal.cpp.
 
+1.8.5
+19.03.2022
+Add support for SSL peer verification and CA certificate.
+
 1.8.4
 29.10.2021
 Add Content-Length header to static file controller.
