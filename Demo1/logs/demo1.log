@@ -1,0 +1,8 @@
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 TemplateLoader: path=/home/stefan/Programmierung/Qt/QtWebApp/Demo1/etc/templates, codec=UTF-8
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 TemplateCache: timeout=60000, size=1000000
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 HttpSessionStore: Sessions expire after 3600000 milliseconds
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 StaticFileController: docroot=/home/stefan/Programmierung/Qt/QtWebApp/Demo1/etc/docroot, encoding=UTF-8, maxAge=60000
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 StaticFileController: cache timeout=60000, size=1000000
+19.03.2022 10:27:05.612 0 DEBUG    0x7ff6a1a41800 RequestMapper: created
+19.03.2022 10:27:05.613 0 DEBUG    0x7ff6a1a41800 HttpListener: Listening on port 8080
+19.03.2022 10:27:05.613 1 WARNING  0x7ff6a1a41800 Application has started

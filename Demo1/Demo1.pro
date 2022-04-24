@@ -28,7 +28,8 @@ SOURCES += src/main.cpp \
 
 OTHER_FILES += etc/* etc/docroot/* etc/templates/* etc/ssl/* logs/*
 
-DISTFILES += ../CHANGELOG.txt ../LICENSE.txt ../README.txt
+DISTFILES += ../CHANGELOG.txt ../LICENSE.txt ../README.txt \
+    etc/ssl/README.txt
 
 #---------------------------------------------------------------------------------------
 # The following lines include the sources of the QtWebAppLib library
