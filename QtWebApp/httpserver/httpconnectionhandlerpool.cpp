@@ -155,7 +155,7 @@ void HttpConnectionHandlerPool::loadSslConfig()
 
                     // Convert relative fileName to absolute, based on the directory of the config file.
                     #ifdef Q_OS_WIN32
-                        if (QDir::isRelativePath(sslCaCertFileName) && settings->format()!=QSettings::NativeFormat)
+                        if (QDir::isRelativePath(caCertFileName) && settings->format()!=QSettings::NativeFormat)
                     #else
                         if (QDir::isRelativePath(caCertFileName))
                     #endif
