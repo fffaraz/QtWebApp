@@ -14,7 +14,6 @@ using namespace stefanfrings;
 
 /**
   This controller generates a website using the template engine.
-  It generates a Latin1 (ISO-8859-1) encoded website from a UTF-8 encoded template file.
 */
 
 class TemplateController : public HttpRequestHandler {
