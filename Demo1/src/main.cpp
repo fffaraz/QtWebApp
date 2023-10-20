@@ -15,14 +15,15 @@ using namespace stefanfrings;
 QString searchConfigFile()
 {
     QString binDir=QCoreApplication::applicationDirPath();
+    QString appName=QCoreApplication::applicationName();
     QString fileName("Demo1.ini");
 
     QStringList searchList;
     searchList.append(binDir);
     searchList.append(binDir+"/etc");
     searchList.append(binDir+"/../etc");
-    searchList.append(binDir+"/../Demo1/etc"); // for development with shadow build (Linux)
-    searchList.append(binDir+"/../../Demo1/etc"); // for development with shadow build (Windows)
+    searchList.append(binDir+"/../"+appName+"/etc");     // for development with shadow build (Linux)
+    searchList.append(binDir+"/../../"+appName+"/etc");  // for development with shadow build (Windows)
     searchList.append(QDir::rootPath()+"etc/opt");
     searchList.append(QDir::rootPath()+"etc");
 
